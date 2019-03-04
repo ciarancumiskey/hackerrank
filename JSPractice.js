@@ -53,3 +53,68 @@ function largestOfFour(arr) {
 }
 
 largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]);
+
+function confirmEnding(str, target) {
+  /*Make a substring out of str starting target.length characters from the end,
+    then compare against target */
+  if(str.substr(str.length - target.length) === target){
+    return true;
+  } else {
+    return false;
+  }
+}
+
+confirmEnding("Bastian", "n");
+
+function repeatStringNumTimes(str, num) {
+  if(num <= 0) {
+    return ""; 
+  }
+  let repeatStr = '';
+  while(num > 0){
+    repeatStr += str;
+    num--;
+  }
+  return repeatStr;
+}
+
+repeatStringNumTimes("abc", 3);
+
+function truncateString(str, num) {
+  // Clear out that junk in your trunk
+  if(str.length <= num){
+    return str; //No need to truncate anything or add ellipses
+  }
+  str = str.substr(0, num);
+  str += "...";
+  return str;
+}
+
+truncateString("A-tisket a-tasket A green and yellow basket", 8);
+
+function findElement(arr, func) {
+  let num = 0;
+  //Loop through arr
+  for(var i = 0; i < arr.length; i++){
+    num = arr[i]; //Overwrite num's value with the i-th element in arr
+    if(func(num)){
+      return num; //Num fulfils func, so return it
+    }
+  }
+  return undefined;
+}
+
+findElement([1, 2, 3, 4], num => num % 2 === 0);
+
+function titleCase(str) {
+  //Turn str to lower case, then split it into separate words
+  var wordsArr = str.toLowerCase().split(" "); 
+  var result = wordsArr.map(function(val){
+      //capitalise the first letter in each word
+      return val.replace(val.charAt(0), val.charAt(0).toUpperCase());
+  });
+  return result.join(" "); //Rejoin the title-cased words
+}
+
+
+titleCase("I'm a little tea pot");
