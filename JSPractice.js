@@ -118,3 +118,71 @@ function titleCase(str) {
 
 
 titleCase("I'm a little tea pot");
+
+/**
+ * arr1 and arr2 are the arrays to be spliced, and elements of arr1 are to be spliced in 
+ * starting from index n
+ */
+function frankenSplice(arr1, arr2, n) {
+  let resArr = arr2.slice(); //Make a copy of arr2 to splice into
+  console.log(resArr);
+  for(let i = 0; i < arr1.length; i++){
+    resArr.splice(n, 0, arr1[i]);
+    n++; //Increment n along with i so that subsequent elements of arr1 
+  }
+  console.log(resArr);
+  return resArr;
+}
+
+frankenSplice([1, 2, 3], [4, 5, 6], 1);
+
+function getIndexToIns(arr, num) {
+  //First, ensure that the target array is sorted
+  arr.sort(function(a, b){
+    return a - b;
+  });
+  for(var i = 0; i < arr.length; i++){
+    if(num <= arr[i]){
+      return i;
+    }
+  }
+  return arr.length;
+}
+
+getIndexToIns([40, 60], 50);
+
+function mutation(arr) {
+  var test = arr[1].toLowerCase();
+  var target = arr[0].toLowerCase();
+  for(var i = 0; i < test.length; i++){
+    if(target.indexOf(test[i]) < 0){ //If the i-th character of test isn't found, indexOf will return a negative number
+      return false;
+    }
+  }
+  return true;
+}
+
+mutation(["hello", "hey"]);
+
+function chunkArrayInGroups(arr, size) {
+  var temp = [];
+  var returnArr = [];
+  for(var i = 0; i < arr.length; i++){
+    if(i % size !== size - 1){
+      temp.push(arr[i]);
+    } else {
+      temp.push(arr[i]);
+      returnArr.push(temp);
+      temp = []; //Vacate temp
+    }
+  }
+  if(temp.length !== 0){
+    returnArr.push(temp);
+  }
+  return returnArr;
+}
+
+chunkArrayInGroups(["a", "b", "c", "d"], 2);
+chunkArrayInGroups([0, 1, 2, 3, 4, 5], 3);
+chunkArrayInGroups([0, 1, 2, 3, 4, 5], 2);
+chunkArrayInGroups([0, 1, 2, 3, 4, 5, 6, 7, 8], 2);
