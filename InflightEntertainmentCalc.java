@@ -9,13 +9,13 @@ public class InflightEntertainmentCalc {
         if(movieLengths.length < 2) {
             return false; //You can't watch the same movie twice anyway
         }
-        for(int i = 0; i < movieLengths.length; i++){
-            //Start the second loop after your position in the first one
-            for(int j = i + 1; j < movieLengths.length; j++){
-                if(movieLengths[i] + movieLengths[j] == flightTime){
-                    return true;
-                }
+        Set<Integer> movieLengthsSeen = new HashSet<>();
+        for(int firstMovieLength : movieLengths){
+            int matchingSecondMovieLength = flightTime - firstMovieLength;
+            if(movieLengthsSeen.contains(matchingSecondMovieLength)){
+                return true;
             }
+            movieLengthsSeen.add(firstMovieLength);
         }
         return false; //No two movie lengths add up to the flight length
     }
