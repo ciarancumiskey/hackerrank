@@ -1,10 +1,11 @@
+package javaFiles;
 // you can also use imports, for example:
 import java.util.*;
 
 // you can write to stdout for debugging purposes, e.g.
 // System.out.println("this is a debug message");
 
-class Solution {
+class ReturnMatchingContact {
     /**
      * @param A: The list of all contacts' names
      * @param B: The list of all contacts' phone numbers
