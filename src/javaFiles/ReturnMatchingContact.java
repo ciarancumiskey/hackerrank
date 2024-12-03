@@ -1,4 +1,4 @@
-package javaFiles;
+package src.javaFiles;
 // you can also use imports, for example:
 import java.util.*;
 
