@@ -35,18 +35,35 @@ public class LibraryFineCalculator {
     /*
      * Complete the 'libraryFine' function below.
      *
-     * The function is expected to return an INTEGER.
+     * The function is expected to return an INTEGER representing the fine due.
      * The function accepts following parameters:
-     *  1. INTEGER d1
-     *  2. INTEGER m1
-     *  3. INTEGER y1
-     *  4. INTEGER d2
-     *  5. INTEGER m2
-     *  6. INTEGER y2
+     *  1. INTEGER returnedDay
+     *  2. INTEGER returnedMonth
+     *  3. INTEGER returnedYear
+     *  4. INTEGER dueDay
+     *  5. INTEGER dueMonth
+     *  6. INTEGER dueYear
      */
 
     public static int calculateLibraryFine(int returnedDay, int returnedMonth, int returnedYear, int dueDay, int dueMonth, int dueYear) {
         // Write your code here
-        return 0;
+        if (returnedYear < dueYear) {
+            return 0;
+        } else if (returnedYear == dueYear) {
+            if (returnedMonth < dueMonth) {
+                return 0;
+            } else if(returnedMonth == dueMonth) {
+                if (returnedDay <= dueDay) {
+                    return 0;
+                } else {
+                    return (15 * (returnedDay - dueDay));
+                }
+            } else {
+                return (500 * (returnedMonth - dueMonth));
+            }
+        } else {
+            // Even if you return it on 1/1/2025 and it was due on 31/12/2024, RIP your kneecaps
+            return 10000;
+        }
     }
 }
