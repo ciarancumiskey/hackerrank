@@ -1,3 +1,4 @@
+package src.javaFiles;
 import java.io.*;
 import java.math.*;
 import java.security.*;
@@ -6,7 +7,7 @@ import java.util.*;
 import java.util.concurrent.*;
 import java.util.regex.*;
 
-public class Solution {
+public class NewYearChaos {
 
     /** Given an array of ints representing the original positions of people in a 
     *   queue, calculate how many of them bribed the person ahead. If anyone needed

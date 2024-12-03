@@ -1,3 +1,4 @@
+package src.javaFiles;
 import java.util.Scanner;
 
 public class OutputFormatter {

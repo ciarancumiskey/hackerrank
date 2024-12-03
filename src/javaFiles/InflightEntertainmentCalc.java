@@ -1,3 +1,4 @@
+package src.javaFiles;
 import java.util.HashSet;
 import java.util.Set;
 public class InflightEntertainmentCalc {

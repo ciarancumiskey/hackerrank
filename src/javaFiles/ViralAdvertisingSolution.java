@@ -1,3 +1,4 @@
+package src.javaFiles;
 import java.io.*;
 import java.math.*;
 import java.security.*;
@@ -10,7 +11,7 @@ import java.util.stream.*;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
-class Result {
+class ViralAdvertisingSolution {
 
     /*
      * Complete the 'viralAdvertising' function below.
@@ -34,16 +35,13 @@ class Result {
         return totalLikes;
     }
 
-}
-
-public class ViralAdvertisingSolution {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
         int n = Integer.parseInt(bufferedReader.readLine().trim());
 
-        int result = Result.viralAdvertising(n);
+        int result = viralAdvertising(n);
 
         bufferedWriter.write(String.valueOf(result));
         bufferedWriter.newLine();

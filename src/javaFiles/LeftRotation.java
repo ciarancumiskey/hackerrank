@@ -1,10 +1,8 @@
-import java.io.*;
-import java.util.*;
-import java.text.*;
-import java.math.*;
-import java.util.regex.*;
+package src.javaFiles;
 
-public class Solution {
+import java.util.*;
+
+public class LeftRotation {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
