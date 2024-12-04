@@ -37,22 +37,35 @@ public class SherlockAndTheValidString {
         final HashMap<Character, Integer> characterCountsMap = new HashMap<>();
         for(int i = 0; i < s.length(); i++){
             Character characterAtI = s.charAt(i);
-            // Increment the character count if it exists
-            if(characterCountsMap.get(characterAtI) != null) {
-                Integer characterCount = characterCountsMap.get(characterAtI);
-                characterCount++;
-                characterCountsMap.put(characterAtI, characterCount);
+            characterCountsMap.put(characterAtI, characterCountsMap.getOrDefault(characterAtI, 0) + 1);
+        }
+        // Create a hashmap to track how many times a letter count shows up. For example, for "aabbcc", "a", "b" and
+        // "c" all appear 2 times, so the count map should be {[2, 3]} for the 3 different letters. "aabbc" results in
+        // a map of {[1, 1], [2, 2]}.
+        final HashMap<Integer, Integer> countMap = new HashMap<>();
+        characterCountsMap.values().forEach(count -> {
+            countMap.put(count, countMap.getOrDefault(count, 0) + 1);
+        });
+
+        if(countMap.size() == 1) {
+            return "YES";
+        } else if (countMap.size() > 2) {
+            // If there are letters which appear 3 different amounts of times (e.g. A appears 1 time, B appears 2
+            // times, C appears 3 times) then it's impossible to just remove 1 letter such that there'll only be one
+            // letter remaining that appears 1 more time than any other letter.
+            return "NO";
+        } else {
+            Object[] countKeys = countMap.keySet().toArray();
+            Object[] countValues = countMap.values().toArray();
+            int charCount1 = (int) countKeys[0];
+            int charCount2 = (int) countKeys[1];
+            int countOfCounts1 = (int) countValues[0];
+            int countOfCounts2 = (int) countValues[1];
+            if((charCount1 + 1 == charCount2 && countOfCounts2 == 1) || (charCount2 + 1 == charCount1 && countOfCounts1 == 1)) {
+                return "YES";
             } else {
-                characterCountsMap.put(characterAtI, 1);
+                return "NO";
             }
         }
-        AtomicInteger removalsRequired = new AtomicInteger();
-        final int minimumAppearances = Collections.min(characterCountsMap.values());
-        characterCountsMap.values().forEach(count -> {
-            if(minimumAppearances < count) {
-                removalsRequired.addAndGet((count - minimumAppearances));
-            }
-        });
-        return (removalsRequired.get() <= 1) ? "YES" : "NO";
     }
 }

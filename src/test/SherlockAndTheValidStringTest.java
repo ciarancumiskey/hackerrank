@@ -21,6 +21,7 @@ public class SherlockAndTheValidStringTest {
         Arguments.of("aaa", "YES"),
         Arguments.of("a", "YES"),
         Arguments.of("abb", "YES"),
+        Arguments.of("abbb", "NO"),
         Arguments.of("abcc", "YES"),
         Arguments.of("abccc", "NO"),
         Arguments.of("abbccc", "NO"),
